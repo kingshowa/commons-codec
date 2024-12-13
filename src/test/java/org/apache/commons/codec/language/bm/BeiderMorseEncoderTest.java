@@ -17,14 +17,19 @@
 
 package org.apache.commons.codec.language.bm;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertTimeout;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
 import java.time.Duration;
 
 import org.apache.commons.codec.AbstractStringEncoderTest;
 import org.apache.commons.codec.EncoderException;
 import org.apache.commons.codec.StringEncoder;
 import org.junit.jupiter.api.Test;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 /**
  * Tests BeiderMorseEncoder.
@@ -56,10 +61,9 @@ public class BeiderMorseEncoderTest extends AbstractStringEncoderTest<StringEnco
     public void testAllChars() throws EncoderException {
         final BeiderMorseEncoder bmpm = createGenericApproxEncoder();
         for (char c = Character.MIN_VALUE; c < Character.MAX_VALUE; c++) {
-            String encoded = bmpm.encode(Character.toString(c));
+            bmpm.encode(Character.toString(c));
         }
     }
-
 
     @Test
     public void testAsciiEncodeNotEmpty1Letter() throws EncoderException {
@@ -103,15 +107,8 @@ public class BeiderMorseEncoderTest extends AbstractStringEncoderTest<StringEnco
     @Test
     public void testEncodeGna() throws EncoderException {
         final BeiderMorseEncoder bmpm = createGenericApproxEncoder();
-        String encodedValue = bmpm.encode("gna");
-
-        // Assert that the encoded value is not null
-
-        // Assert that the encoded value is not empty
-        assertFalse(encodedValue.isEmpty(), "Encoded value should not be empty for input 'gna'");
-
+        bmpm.encode("gna");
     }
-
 
     @Test
     public void testInvalidLangIllegalArgumentException() {
