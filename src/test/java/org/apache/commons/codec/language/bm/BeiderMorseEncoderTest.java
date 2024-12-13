@@ -17,19 +17,14 @@
 
 package org.apache.commons.codec.language.bm;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertNotEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
-import static org.junit.jupiter.api.Assertions.assertTimeout;
-import static org.junit.jupiter.api.Assertions.assertTrue;
-
 import java.time.Duration;
 
 import org.apache.commons.codec.AbstractStringEncoderTest;
 import org.apache.commons.codec.EncoderException;
 import org.apache.commons.codec.StringEncoder;
 import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 /**
  * Tests BeiderMorseEncoder.
@@ -61,9 +56,13 @@ public class BeiderMorseEncoderTest extends AbstractStringEncoderTest<StringEnco
     public void testAllChars() throws EncoderException {
         final BeiderMorseEncoder bmpm = createGenericApproxEncoder();
         for (char c = Character.MIN_VALUE; c < Character.MAX_VALUE; c++) {
-            bmpm.encode(Character.toString(c));
+            String encoded = bmpm.encode(Character.toString(c));
+
+            // Optionally check the encoded result length or format
+            assertFalse(encoded.isEmpty(), "Encoded result is empty for character: " + c);
         }
     }
+
 
     @Test
     public void testAsciiEncodeNotEmpty1Letter() throws EncoderException {
