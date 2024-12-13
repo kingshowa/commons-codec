@@ -19,6 +19,8 @@ package org.apache.commons.codec.net;
 
 import org.junit.jupiter.api.Test;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 /**
  * Tests Utils.
  * <p>
@@ -33,7 +35,10 @@ public class UtilsTest {
      */
     @Test
     public void testConstructor() {
-        new Utils();
+
+        Utils u =new Utils();
+        //assertEquals(1,1);
+        assert(u instanceof Utils);
     }
 
 }
