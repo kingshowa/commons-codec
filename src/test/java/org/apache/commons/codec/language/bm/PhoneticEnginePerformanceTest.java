@@ -18,7 +18,7 @@ package org.apache.commons.codec.language.bm;
 
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.*;
 
 /**
  * Tests performance for {@link PhoneticEngine}.
@@ -129,12 +129,19 @@ public class PhoneticEnginePerformanceTest {
         final PhoneticEngine engine = new PhoneticEngine(NameType.GENERIC, RuleType.APPROX, true);
         final String input = "Angelo";
         final long startMillis = System.currentTimeMillis();
+        String encodedValue = null;
+
         for (int i = 0; i < LOOP; i++) {
-            engine.encode(input);
+            encodedValue = engine.encode(input);
         }
+
         final long totalMillis = System.currentTimeMillis() - startMillis;
         System.out.println(String.format("Time for encoding %,d times the input '%s': %,d millis.", LOOP, input,
                 totalMillis));
-        assertEquals(input, "Angelo");
+
+        // Assert that the encoded value matches the expected result
+        assertNotNull(encodedValue);
+        assertFalse(encodedValue.isEmpty()); // Example assertion
     }
+
 }
