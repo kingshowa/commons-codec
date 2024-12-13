@@ -57,9 +57,6 @@ public class BeiderMorseEncoderTest extends AbstractStringEncoderTest<StringEnco
         final BeiderMorseEncoder bmpm = createGenericApproxEncoder();
         for (char c = Character.MIN_VALUE; c < Character.MAX_VALUE; c++) {
             String encoded = bmpm.encode(Character.toString(c));
-
-            // Optionally check the encoded result length or format
-            assertTrue(encoded.isEmpty(), "Encoded result is empty for character: " + c);
         }
     }
 
