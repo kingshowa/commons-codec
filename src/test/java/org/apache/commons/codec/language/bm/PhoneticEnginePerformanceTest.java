@@ -18,6 +18,8 @@ package org.apache.commons.codec.language.bm;
 
 import org.junit.jupiter.api.Test;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 /**
  * Tests performance for {@link PhoneticEngine}.
  * <p>
@@ -133,5 +135,6 @@ public class PhoneticEnginePerformanceTest {
         final long totalMillis = System.currentTimeMillis() - startMillis;
         System.out.println(String.format("Time for encoding %,d times the input '%s': %,d millis.", LOOP, input,
                 totalMillis));
+        assertEquals(input, "Angelo");
     }
 }
