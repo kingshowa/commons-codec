@@ -112,6 +112,9 @@ limitations under the License.
     <commons.jacoco.branchRatio>0.86</commons.jacoco.branchRatio>
     <commons.jacoco.lineRatio>0.89</commons.jacoco.lineRatio>
     <commons.jacoco.complexityRatio>0.84</commons.jacoco.complexityRatio>
+
+    <sonar.organization>kingshowa</sonar.organization>
+    <sonar.host.url>https://sonarcloud.io</sonar.host.url>
   </properties>
   <build>
     <defaultGoal>clean verify apache-rat:check japicmp:cmp checkstyle:check javadoc:javadoc</defaultGoal>
