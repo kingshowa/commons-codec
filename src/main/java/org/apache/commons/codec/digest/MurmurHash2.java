@@ -250,19 +250,26 @@ public final class MurmurHash2 {
         switch (length - index) {
         case 7:
             h ^= ((long) data[index + 6] & 0xff) << 48;
+            break;
         case 6:
             h ^= ((long) data[index + 5] & 0xff) << 40;
+            break;
         case 5:
             h ^= ((long) data[index + 4] & 0xff) << 32;
+            break;
         case 4:
             h ^= ((long) data[index + 3] & 0xff) << 24;
+            break;
         case 3:
             h ^= ((long) data[index + 2] & 0xff) << 16;
+            break;
         case 2:
             h ^= ((long) data[index + 1] & 0xff) << 8;
+            break;
         case 1:
             h ^= (long) data[index] & 0xff;
             h *= M64;
+            break;
         }
 
         h ^= h >>> R64;
