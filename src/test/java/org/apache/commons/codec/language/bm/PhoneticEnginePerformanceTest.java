@@ -136,8 +136,8 @@ public class PhoneticEnginePerformanceTest {
         }
 
         final long totalMillis = System.currentTimeMillis() - startMillis;
-        System.out.println(String.format("Time for encoding %,d times the input '%s': %,d millis.", LOOP, input,
-                totalMillis));
+        System.out.printf("Time for encoding %,d times the input '%s': %,d millis.%n", LOOP, input,
+                totalMillis);
 
         // Assert that the encoded value matches the expected result
         assertNotNull(encodedValue);
