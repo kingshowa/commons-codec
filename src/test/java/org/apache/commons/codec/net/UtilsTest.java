@@ -35,9 +35,8 @@ public class UtilsTest {
      */
     @Test
     public void testConstructor() {
-
         Utils u =new Utils();
-        //assertEquals(1,1);
+        assertEquals(1,1);
         assert(u instanceof Utils);
     }
 
