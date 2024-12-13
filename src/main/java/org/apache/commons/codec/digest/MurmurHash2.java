@@ -139,8 +139,10 @@ public final class MurmurHash2 {
         switch (length - index) {
         case 3:
             h ^= (data[index + 2] & 0xff) << 16;
+            break;
         case 2:
             h ^= (data[index + 1] & 0xff) << 8;
+            break;
         case 1:
             h ^= data[index] & 0xff;
             h *= M32;
