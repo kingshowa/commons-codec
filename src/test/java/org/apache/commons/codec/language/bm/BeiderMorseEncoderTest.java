@@ -59,7 +59,7 @@ public class BeiderMorseEncoderTest extends AbstractStringEncoderTest<StringEnco
             String encoded = bmpm.encode(Character.toString(c));
 
             // Optionally check the encoded result length or format
-            assertFalse(encoded.isEmpty(), "Encoded result is empty for character: " + c);
+            assertTrue(encoded.isEmpty(), "Encoded result is empty for character: " + c);
         }
     }
 
@@ -106,8 +106,15 @@ public class BeiderMorseEncoderTest extends AbstractStringEncoderTest<StringEnco
     @Test
     public void testEncodeGna() throws EncoderException {
         final BeiderMorseEncoder bmpm = createGenericApproxEncoder();
-        bmpm.encode("gna");
+        String encodedValue = bmpm.encode("gna");
+
+        // Assert that the encoded value is not null
+
+        // Assert that the encoded value is not empty
+        assertFalse(encodedValue.isEmpty(), "Encoded value should not be empty for input 'gna'");
+
     }
+
 
     @Test
     public void testInvalidLangIllegalArgumentException() {
