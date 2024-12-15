@@ -58,6 +58,8 @@ import java.nio.charset.StandardCharsets;
  */
 public class CharEncoding {
 
+    private CharEncoding(){};
+
     /**
      * CharEncodingISO Latin Alphabet No. 1, a.k.a. ISO-LATIN-1.
      * <p>
