@@ -9,7 +9,7 @@ public class Base64Test {
     public static boolean debug = false;
 
     @Test
-    public void testBase64() throws Throwable {
+    public void test001() throws Throwable {
         if (debug)
             System.out.format("%n%s%n", "RegressionTest0.test001");
         byte[] byteArray3 = new byte[] { (byte) 0, (byte) 100 };
