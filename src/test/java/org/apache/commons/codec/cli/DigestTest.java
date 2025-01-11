@@ -26,18 +26,33 @@ import org.junit.jupiter.api.Test;
  */
 public class DigestTest {
 
-    /**
-     * Tests if empty arguments are handled correctly.
-     */
     @Test
-    public void testEmptyArguments() {
-        assertThrows(IllegalArgumentException.class, () -> Digest.main(new String[0]));
+    public void testMainNoArgs() {
+        assertThrows(IllegalArgumentException.class, () -> Digest.main(new String[] {}));
     }
-    /**
-     * Tests if null arguments are handled correctly.
-     */
+
     @Test
-    public void testNullArguments() {
-        assertThrows(NullPointerException.class, () -> Digest.main(null));
+    public void testMainOneArg() {
+        assertThrows(IllegalArgumentException.class, () -> Digest.main(new String[] { "SHA-256" }));
+    }
+
+    @Test
+    public void testMainTwoArgs() {
+        assertThrows(IllegalArgumentException.class, () -> Digest.main(new String[] { "SHA-256", "file" }));
+    }
+
+    @Test
+    public void testMainInvalidAlgorithm() {
+        assertThrows(IllegalArgumentException.class, () -> Digest.main(new String[] { "SHA-256", "file", "invalid" }));
+    }
+
+    @Test
+    public void testMainInvalidFile() {
+        assertThrows(IllegalArgumentException.class, () -> Digest.main(new String[] { "SHA-256", "invalid", "SHA-256" }));
+    }
+
+    @Test
+    public void testMainInvalidAlgorithmAndFile() {
+        assertThrows(IllegalArgumentException.class, () -> Digest.main(new String[] { "SHA-256", "invalid", "invalid" }));
     }
 }

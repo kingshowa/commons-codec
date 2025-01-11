@@ -74,9 +74,9 @@ public class Digest {
         }
     }
 
-//    private void println(final String prefix, final byte[] digest) {
-//        println(prefix, digest, null);
-//    }
+    private void println(final String prefix, final byte[] digest) {
+        println(prefix, digest, null);
+    }
 
     private void println(final String prefix, final byte[] digest, final String fileName) {
         // The standard appears to be to print
@@ -84,7 +84,7 @@ public class Digest {
         // where '*' is used for binary files
         // shasum(1) has a -b option which generates " *" separator
         // we don't distinguish binary files at present
-        //System.out.println(prefix + Hex.encodeHexString(digest) + (fileName != null ? "  " + fileName : ""));
+        System.out.println(prefix + Hex.encodeHexString(digest) + (fileName != null ? "  " + fileName : ""));
     }
 
     private void run() throws IOException {
@@ -102,48 +102,48 @@ public class Digest {
 
     private void run(final String prefix, final MessageDigest messageDigest) throws IOException {
         if (inputs == null) {
-//            println(prefix, DigestUtils.digest(messageDigest, System.in));
+            println(prefix, DigestUtils.digest(messageDigest, System.in));
             return;
         }
         for (final String source : inputs) {
             final File file = new File(source);
             if (file.isFile()) {
-//                println(prefix, DigestUtils.digest(messageDigest, file), source);
+                println(prefix, DigestUtils.digest(messageDigest, file), source);
             } else if (file.isDirectory()) {
-//                final File[] listFiles = file.listFiles();
-//                if (listFiles != null) {
-//                    run(prefix, messageDigest, listFiles);
-//                }
+                final File[] listFiles = file.listFiles();
+                if (listFiles != null) {
+                    run(prefix, messageDigest, listFiles);
+                }
             } else {
                 // use the default charset for the command-line parameter
-//                final byte[] bytes = source.getBytes(Charset.defaultCharset());
-//                println(prefix, DigestUtils.digest(messageDigest, bytes));
+                final byte[] bytes = source.getBytes(Charset.defaultCharset());
+                println(prefix, DigestUtils.digest(messageDigest, bytes));
             }
         }
     }
 
-//    private void run(final String prefix, final MessageDigest messageDigest, final File[] files) throws IOException {
-//        for (final File file : files) {
-//            if (file.isFile()) {
-//                println(prefix, DigestUtils.digest(messageDigest, file), file.getName());
-//            }
-//        }
-//    }
-
-//    private void run(final String prefix, final String messageDigestAlgorithm) throws IOException {
-//        run(prefix, DigestUtils.getDigest(messageDigestAlgorithm));
-//    }
-
-    private void run(final String[] digestAlgorithms) throws IOException {
-//        for (final String messageDigestAlgorithm : digestAlgorithms) {
-//            if (DigestUtils.isAvailable(messageDigestAlgorithm)) {
-//                run(messageDigestAlgorithm + " ", messageDigestAlgorithm);
-//            }
-//        }
+    private void run(final String prefix, final MessageDigest messageDigest, final File[] files) throws IOException {
+        for (final File file : files) {
+            if (file.isFile()) {
+                println(prefix, DigestUtils.digest(messageDigest, file), file.getName());
+            }
+        }
     }
 
-//    @Override
-//    public String toString() {
-//        return String.format("%s %s", super.toString(), Arrays.toString(args));
-//    }
+    private void run(final String prefix, final String messageDigestAlgorithm) throws IOException {
+        run(prefix, DigestUtils.getDigest(messageDigestAlgorithm));
+    }
+
+    private void run(final String[] digestAlgorithms) throws IOException {
+        for (final String messageDigestAlgorithm : digestAlgorithms) {
+            if (DigestUtils.isAvailable(messageDigestAlgorithm)) {
+                run(messageDigestAlgorithm + " ", messageDigestAlgorithm);
+            }
+        }
+    }
+
+    @Override
+    public String toString() {
+        return String.format("%s %s", super.toString(), Arrays.toString(args));
+    }
 }
