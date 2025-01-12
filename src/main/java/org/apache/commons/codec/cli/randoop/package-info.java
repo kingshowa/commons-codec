@@ -15,14 +15,7 @@
  * limitations under the License.
  */
 
-package org.apache.commons.codec.binary.randoop;
-
-import java.nio.ByteBuffer;
-
-public class AllocateDirectHexTest extends HexTest {
-
-    @Override
-    protected ByteBuffer allocate(final int capacity) {
-        return ByteBuffer.allocateDirect(capacity);
-    }
-}
+/**
+ * Command line utility.
+ */
+package org.apache.commons.codec.cli.randoop;

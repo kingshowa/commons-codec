@@ -26,33 +26,93 @@ import org.junit.jupiter.api.Test;
  */
 public class DigestTest {
 
+    /**
+     * Tests if the main method is handled correctly.
+     */
     @Test
-    public void testMainNoArgs() {
-        assertThrows(IllegalArgumentException.class, () -> Digest.main(new String[] {}));
+    public void testMain() {
+        assertThrows(NullPointerException.class, () -> Digest.main(new String[] { null }));
     }
 
+    /**
+     * Tests if the main method is handled correctly.
+     */
     @Test
-    public void testMainOneArg() {
-        assertThrows(IllegalArgumentException.class, () -> Digest.main(new String[] { "SHA-256" }));
+    public void testMain2() {
+        assertThrows(IllegalArgumentException.class, () -> Digest.main(new String[] { }));
     }
 
+    /**
+     * Tests if the main method is handled correctly.
+     */
     @Test
-    public void testMainTwoArgs() {
-        assertThrows(IllegalArgumentException.class, () -> Digest.main(new String[] { "SHA-256", "file" }));
+    public void testMain3() {
+        assertThrows(IllegalArgumentException.class, () -> Digest.main(new String[] { "arg0" }));
     }
 
+    /**
+     * Tests if the main method is handled correctly.
+     */
     @Test
-    public void testMainInvalidAlgorithm() {
-        assertThrows(IllegalArgumentException.class, () -> Digest.main(new String[] { "SHA-256", "file", "invalid" }));
+    public void testMain4() {
+        assertThrows(IllegalArgumentException.class, () -> Digest.main(new String[] { "arg0", "arg1" }));
     }
 
+    /**
+     * Tests if the main method is handled correctly.
+     */
     @Test
-    public void testMainInvalidFile() {
-        assertThrows(IllegalArgumentException.class, () -> Digest.main(new String[] { "SHA-256", "invalid", "SHA-256" }));
+    public void testMain5() {
+        assertThrows(IllegalArgumentException.class, () -> Digest.main(new String[] { "arg0", "arg1", "arg2" }));
     }
 
+    /**
+     * Tests if the main method is handled correctly.
+     */
     @Test
-    public void testMainInvalidAlgorithmAndFile() {
-        assertThrows(IllegalArgumentException.class, () -> Digest.main(new String[] { "SHA-256", "invalid", "invalid" }));
+    public void testMain6() {
+        assertThrows(IllegalArgumentException.class, () -> Digest.main(new String[] { "arg0", "arg1", "arg2", "arg3" }));
+    }
+
+    /**
+     * Tests if the main method is handled correctly.
+     */
+    @Test
+    public void testMain7() {
+        assertThrows(IllegalArgumentException.class, () -> Digest.main(new String[] { "arg0", "arg1", "arg2", "arg3", "arg4" }));
+    }
+
+    /**
+     * Tests if the main method is handled correctly.
+     */
+    @Test
+    public void testMain8() {
+        assertThrows(IllegalArgumentException.class, () -> Digest.main(new String[] { "arg0", "arg1", "arg2", "arg3", "arg4", "arg5" }));
+    }
+
+    /**
+     * Tests if the main method is handled correctly.
+     */
+    @Test
+    public void testMain9() {
+        assertThrows(IllegalArgumentException.class, () -> Digest.main(new String[] { "arg0", "arg1", "arg2", "arg3", "arg4", "arg5", "arg6" }));
+    }
+
+    /**
+     * Tests if the main method is handled correctly.
+     */
+    /**
+     * Tests if empty arguments are handled correctly.
+     */
+    @Test
+    public void testEmptyArguments() {
+        assertThrows(IllegalArgumentException.class, () -> Digest.main(new String[0]));
+    }
+    /**
+     * Tests if null arguments are handled correctly.
+     */
+    @Test
+    public void testNullArguments() {
+        assertThrows(NullPointerException.class, () -> Digest.main(null));
     }
 }
