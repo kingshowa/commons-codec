@@ -24,6 +24,7 @@ import java.io.FileOutputStream;
 import java.io.PrintStream;
 import java.lang.reflect.Constructor;
 import java.nio.charset.StandardCharsets;
+import java.security.SecureRandom;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
@@ -171,9 +172,12 @@ public class PureJavaCrc32Test {
             }
         }
 
+        private static final SecureRandom SECURE_RANDOM = new SecureRandom();
+
         private static void doBench(final List<Class<? extends Checksum>> crcs, final PrintStream out) throws Exception {
             final byte[] bytes = new byte[MAX_LEN];
-            new Random().nextBytes(bytes);
+            //new Random().nextBytes(bytes);
+            SECURE_RANDOM.nextBytes(bytes); // Use SecureRandom
 
             // Print header
             out.printf("\nPerformance Table (The unit is MB/sec; #T = #Theads)\n");

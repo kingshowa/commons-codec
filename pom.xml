@@ -114,6 +114,12 @@ limitations under the License.
       <scope>compile</scope>
     </dependency>
 
+<!--    <dependency>-->
+<!--      <groupId>org.owasp</groupId>-->
+<!--      <artifactId>dependency-check-maven</artifactId>-->
+<!--      <version>11.1.1</version>-->
+<!--    </dependency>-->
+
   </dependencies>
 
   <repositories>
@@ -332,7 +338,20 @@ limitations under the License.
         </configuration>
       </plugin>
 
-        
+      <plugin>
+        <groupId>org.owasp</groupId>
+        <artifactId>dependency-check-maven</artifactId>
+        <version>8.4.0</version> <!-- Use the latest version -->
+        <executions>
+          <execution>
+            <phase>verify</phase>
+            <goals>
+              <goal>check</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+
      </plugins>
 </build>
   
